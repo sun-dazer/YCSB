@@ -12,6 +12,6 @@ To build a single database binding:
 
 To run a workload:
 
-    ./bin/ycsb run couchdb -P workloads/workloada -p exportfile=results/file.txt 
+    ./bin/ycsb run mongodb -P workloads/workloada -p exportfile=results/file.txt 
 
 
