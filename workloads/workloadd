@@ -36,6 +36,7 @@ readproportion=0.95
 updateproportion=0
 scanproportion=0
 insertproportion=0.05
+table=d
 
 requestdistribution=latest
 

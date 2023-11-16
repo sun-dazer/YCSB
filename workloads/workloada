@@ -1,3 +1,4 @@
+
 # Copyright (c) 2010 Yahoo! Inc. All rights reserved.                                                                                                                             
 #                                                                                                                                                                                 
 # Licensed under the Apache License, Version 2.0 (the "License"); you                                                                                                             
@@ -25,13 +26,15 @@
 recordcount=1000
 operationcount=1000
 workload=site.ycsb.workloads.CoreWorkload
-
+ 
 readallfields=true
 
 readproportion=0.5
 updateproportion=0.5
 scanproportion=0
 insertproportion=0
+
+table=a
 
 requestdistribution=zipfian
 

@@ -36,6 +36,7 @@ readproportion=0
 updateproportion=0
 scanproportion=0.95
 insertproportion=0.05
+table=e
 
 requestdistribution=zipfian
 
