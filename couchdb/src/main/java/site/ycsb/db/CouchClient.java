@@ -40,8 +40,8 @@ public class CouchClient extends DB {
     properties.setCreateDbIfNotExist(true);
     properties.setProtocol("http");
     // Add username and password for CouchDB authentication
-    properties.setUsername("hareem");
-    properties.setPassword("bdma1234");
+    properties.setUsername("admin");
+    properties.setPassword("Ab123124");
     Properties props = getProperties();
     batchInsertList = new ArrayList<JsonObject>();
     batchSize = Integer.parseInt(props.getProperty("batchsize", "1000"));
