@@ -40,8 +40,8 @@ public class CouchClient extends DB {
     properties.setCreateDbIfNotExist(true);
     properties.setProtocol("http");
     // Add username and password for CouchDB authentication
-    properties.setUsername("admin");
-    properties.setPassword("Ab123124");
+    properties.setUsername("hareem");
+    properties.setPassword("bdma1234");
     Properties props = getProperties();
     batchInsertList = new ArrayList<JsonObject>();
     batchSize = Integer.parseInt(props.getProperty("batchsize", "1000"));
@@ -97,20 +97,15 @@ public class CouchClient extends DB {
 
   @Override
   public Status update(String table, String key, Map<String, ByteIterator> values) {
-    try{
-        JsonObject jsonObject = dbClient.find(JsonObject.class, key);
-      if (null == jsonObject) {
-        return Status.NOT_FOUND;
-      }
-      for (Map.Entry<String, ByteIterator> entry : values.entrySet()) {
-        jsonObject.addProperty(entry.getKey(), entry.getValue().toString());
-      }
-      dbClient.update(jsonObject);
-      return Status.OK;
-    }
-    catch (NoDocumentException e) {
+    JsonObject jsonObject = dbClient.find(JsonObject.class, key);
+    if (null == jsonObject) {
       return Status.NOT_FOUND;
     }
+    for (Map.Entry<String, ByteIterator> entry : values.entrySet()) {
+      jsonObject.addProperty(entry.getKey(), entry.getValue().toString());
+    }
+    dbClient.update(jsonObject);
+    return Status.OK;
   }
 
   @Override
@@ -134,12 +129,7 @@ public class CouchClient extends DB {
 
   @Override
   public Status delete(String table, String key) {
-    try{
-      dbClient.remove(dbClient.find(Document.class, key));
-    }
-    catch (NoDocumentException e) {
-      return Status.NOT_FOUND;
-    }
+    dbClient.remove(dbClient.find(Document.class, key));
     return Status.OK;
   }
 }
