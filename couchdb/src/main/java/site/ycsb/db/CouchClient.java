@@ -38,7 +38,7 @@ public class CouchClient extends DB {
     properties.setPort(5984);
     properties.setDbName("ycsb");
     properties.setCreateDbIfNotExist(true);
-    properties.setProtocol("http");
+    properties.setProtocol("https");
     // Add username and password for CouchDB authentication
     properties.setUsername("admin");
     properties.setPassword("Ab123124");
