@@ -83,6 +83,12 @@ LICENSE file.
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.apache.htrace</groupId>
+        <artifactId>htrace-core4</artifactId>
+        <version>4.2.0-incubating</version>
+      </dependency>
+
+      <dependency>
         <groupId>com.puppycrawl.tools</groupId>
         <artifactId>checkstyle</artifactId>
         <version>7.7.1</version>
