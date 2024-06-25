@@ -97,15 +97,20 @@ public class CouchClient extends DB {
 
   @Override
   public Status update(String table, String key, Map<String, ByteIterator> values) {
-    JsonObject jsonObject = dbClient.find(JsonObject.class, key);
-    if (null == jsonObject) {
+    try{
+        JsonObject jsonObject = dbClient.find(JsonObject.class, key);
+      if (null == jsonObject) {
+        return Status.NOT_FOUND;
+      }
+      for (Map.Entry<String, ByteIterator> entry : values.entrySet()) {
+        jsonObject.addProperty(entry.getKey(), entry.getValue().toString());
+      }
+      dbClient.update(jsonObject);
+      return Status.OK;
+    }
+    catch (NoDocumentException e) {
       return Status.NOT_FOUND;
     }
-    for (Map.Entry<String, ByteIterator> entry : values.entrySet()) {
-      jsonObject.addProperty(entry.getKey(), entry.getValue().toString());
-    }
-    dbClient.update(jsonObject);
-    return Status.OK;
   }
 
   @Override
@@ -129,7 +134,12 @@ public class CouchClient extends DB {
 
   @Override
   public Status delete(String table, String key) {
-    dbClient.remove(dbClient.find(Document.class, key));
+    try{
+      dbClient.remove(dbClient.find(Document.class, key));
+    }
+    catch (NoDocumentException e) {
+      return Status.NOT_FOUND;
+    }
     return Status.OK;
   }
 }
